@@ -27,18 +27,20 @@ main.appendChild(
           'use', undefined, 'href=./assets/board-pieces.svg#slot'
         ]
       ], [
+        'div', 'slot-padding'
+      ], [
         'span', 'sr-only'
       ]
+    ]),
+    ...[...Array(cols)].map((_, i) => [
+      'div', 'grid-item', `data-col=${cols - i % cols}`, [
+        'button', 'sr-only', 'type=button', [
+          `textNode Column ${cols - i % cols}`
+        ]
+      ]
     ])
-  )
-)
 
-main.appendChild(
-  createEl('div', undefined, undefined, ...[...Array(cols)].map((_, i) => [
-    'button', 'sr-only', `data-col=${cols - i % cols} type=button`, [
-      `textNode Column ${cols - i % cols}`
-    ]
-  ]))
+  )
 )
 
 const toggleModal = toggle => {
@@ -74,7 +76,7 @@ const hoverHandler = (() => {
     colEls.splice(0, colEls.length, ...document.querySelectorAll(`[data-col="${hoveredCol}"]`))
     if (col) {
       colX = containerWidth - colWidth * col
-      document.querySelector(`button[data-col="${col}"]`).focus()
+      document.querySelector(`[data-col="${col}"] button`).focus()
     }
     for (let i = 0; i < colEls.length; ++i) colEls[i].classList.add('highlight')
   }
@@ -141,7 +143,7 @@ const clickHandler = (() => {
     }
     const col = getAttribute(e.target, 'data-col', true)
     if (!modalHidden || !col) return null
-    document.querySelector(`button[data-col="${col}"]`).focus()
+    document.querySelector(`[data-col="${col}"] button`).focus()
     pushToCol(parseInt(col))
   }
 })()

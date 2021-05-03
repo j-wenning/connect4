@@ -75,7 +75,7 @@ button:active {
   position: absolute;
   display: grid;
   overflow: hidden;
-  grid: repeat(var(--board-rows), auto) / repeat(var(--board-columns), auto);
+  grid: repeat(calc(var(--board-rows)), auto) 1px / repeat(var(--board-columns), auto);
   border-radius: 15px;
 }
 
@@ -87,7 +87,7 @@ button:active {
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  width: 100% !important;
   position: absolute;
   cursor: pointer;
 }
@@ -102,15 +102,14 @@ button:active {
   transition: transform 0.2s ease-out;
 }
 
-.slot {
-  color: cornflowerblue;
-  box-shadow: 0 0 0 5px cornflowerblue;
+.slot { color: cornflowerblue; }
+
+.slot-padding {
+  box-shadow: 0px 0px 0px 5px cornflowerblue;
+  z-index: -1;
 }
 
-.highlight {
-  filter: brightness(1.5);
-  z-index: 1;
-}
+.highlight .slot { filter: brightness(1.5); }
 
 [data-player="0"] .token { opacity: 0; }
 
