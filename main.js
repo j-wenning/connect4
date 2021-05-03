@@ -20,11 +20,11 @@ main.appendChild(
     'div', 'grid', undefined, ...[...Array(cols * rows)].map((_, i) => [
       'div', 'grid-item', `data-index=${i} data-col=${cols - i % cols} data-player=0`, [
         'svg', 'token', undefined, [
-          'use', undefined, 'href=./board-pieces.svg#token'
+          'use', undefined, 'href=./assets/board-pieces.svg#token'
         ]
       ], [
         'svg', 'slot', undefined, [
-          'use', undefined, 'href=./board-pieces.svg#slot'
+          'use', undefined, 'href=./assets/board-pieces.svg#slot'
         ]
       ], [
         'span', 'sr-only'
